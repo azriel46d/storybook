@@ -7,8 +7,14 @@ module.exports = (webpack) => {
   // todo: have a default entry that notes the selected flavor is unsupported or something
   let sbEntryPath = '';
 
-  const flavorName = webpack.Utils.flavor.determineProjectFlavor();
+  let flavorName = webpack.Utils.flavor.determineProjectFlavor();
   if (flavorName && ['vue', 'angular'].includes(flavorName)) {
+    if (flavorName === 'vue') {
+      const packageJSON = webpack.Utils.project.getPackageJson();
+      if (packageJSON.dependencies['nativescript-vue'].startsWith('3')) {
+        flavorName = 'vue3';
+      }
+    }
     // supported flavor, resolve entry path...
     sbEntryPath = resolve(__dirname, `./device/${flavorName}/entry`);
   }

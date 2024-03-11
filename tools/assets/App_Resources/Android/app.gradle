@@ -6,7 +6,7 @@
 //}
 
 android {
-  compileSdkVersion 31
+  compileSdkVersion 33
   defaultConfig {
     minSdkVersion 21
     targetSdkVersion 31
@@ -14,5 +14,13 @@ android {
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"
+  }
+  buildTypes {
+    debug {
+      resValue "string", "clear_text_config", "true"
+    }
+    release {
+      resValue "string", "clear_text_config", "false"
+    }
   }
 }

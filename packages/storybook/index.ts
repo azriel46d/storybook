@@ -8,7 +8,10 @@ frameworkPackages[AngularFramework] = 'nativescript';
 const VueFramework = resolve(__dirname, './src/vue');
 frameworkPackages[VueFramework] = 'nativescript';
 
-export { middleware, AngularFramework, VueFramework };
+const Vue3Framework = resolve(__dirname, './src/vue3');
+frameworkPackages[Vue3Framework] = 'nativescript';
+
+export { middleware, AngularFramework, VueFramework, Vue3Framework };
 export default {
   middleware,
 };

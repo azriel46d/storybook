@@ -18,7 +18,7 @@ export const core: PresetProperty<'core', StorybookConfig> = async (config, opti
       name: wrapForPnP('@storybook/builder-webpack5') as '@storybook/builder-webpack5',
       options: typeof framework === 'string' ? {} : framework.options.builder || {},
     },
-    renderer: wrapForPnP('@storybook/vue'),
+    renderer: wrapForPnP('@storybook/vue3'),
   };
 };
 

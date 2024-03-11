@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDirs": [".", "../.."],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["app/*"],
+      "@demo/shared": ["../../tools/demo/index.ts"],
+      "@nativescript/*": ["../../packages/*"]
+    }
+  },
+  "vueCompilerOptions": {
+    "target": 3,
+    "lib": "nativescript-vue"
+  }
+}

@@ -73,6 +73,20 @@ module.exports = {
           description: '⚆  Run Android  🤖',
         },
       },
+      'demo-vue3': {
+        clean: {
+          script: 'nx run demo-vue3:clean',
+          description: '⚆  Clean  🧹',
+        },
+        ios: {
+          script: 'nx run demo-vue3:ios',
+          description: '⚆  Run iOS  ',
+        },
+        android: {
+          script: 'nx run demo-vue3:android',
+          description: '⚆  Run Android  🤖',
+        },
+      },
     },
 
     '⚙️': {
