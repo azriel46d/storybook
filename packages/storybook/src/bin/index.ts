@@ -30,14 +30,18 @@ function info(message: string) {
 }
 
 function initializeStubs() {
-  const flavorName = Utils.flavor.determineProjectFlavor();
+  let flavorName = Utils.flavor.determineProjectFlavor();
+  const packageJSON = Utils.project.getPackageJson();
+  if (packageJSON?.dependencies?.['nativescript-vue'].startsWith('3')) {
+    //@ts-ignore
+    flavorName = 'vue3';
+  }
   if (!flavorName) {
     error(
       `Could not determine project flavor. Please run this command from the root of your project.`
     );
     return;
   }
-
   const stubFilesPath = resolve(__dirname, '../../stubs');
   const projectRoot = process.cwd();
 

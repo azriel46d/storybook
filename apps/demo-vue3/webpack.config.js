@@ -10,8 +10,13 @@ module.exports = (env) => {
       '@demo/shared',
       resolve(__dirname, '..', '..', 'tools', 'demo')
     );
-    config.resolve.alias.set('vue', 'nativescript-vue/dist/withCompiler.js');
   });
+  webpack.chainWebpack(
+    (config) => {
+      config.resolve.alias.set('vue', 'nativescript-vue/dist/withCompiler.js');
+    },
+    { order: 2 }
+  );
 
   // Learn how to customize:
   // https://docs.nativescript.org/webpack

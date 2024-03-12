@@ -7,7 +7,10 @@ module.exports = (env) => {
 
   webpack.chainWebpack((config) => {
     // shared demo code
-    config.resolve.alias.set('@demo/shared', resolve(__dirname, '..', '..', 'tools', 'demo'));
+    config.resolve.alias.set(
+      '@demo/shared',
+      resolve(__dirname, '..', '..', 'tools', 'demo')
+    );
   });
 
   // Example of how to share common images across demo apps:

@@ -6,7 +6,13 @@ import { WebSocket } from '@valor/nativescript-websockets/websocket';
 import { storiesMeta } from '../storyDiscovery';
 import { StorybookWelcomeView } from '../StorybookWelcomeView';
 //@ts-ignore
-import { createApp, registerElement, defineComponent, h } from 'nativescript-vue';
+import {
+  createApp,
+  registerElement,
+  defineComponent,
+  h,
+  markRaw,
+} from 'nativescript-vue';
 
 declare const NSC_STORYBOOK_WS_ADDRESS: string;
 
@@ -19,9 +25,11 @@ const apiWebsocket = new WebSocket(`${wsAddress}/device`);
 const StorybookStoryComponent = {
   props: ['currentComponent'],
   render() {
-    return h(this.currentComponent.component, {
-      props: this.currentComponent.args,
-    });
+    return markRaw(
+      h(this.currentComponent.component, {
+        ...this.currentComponent.args,
+      })
+    );
   },
   errorCaptured(err, vm, info) {
     console.log('errorCaptured', err, vm, info);
@@ -40,7 +48,6 @@ createApp({
   created() {
     apiWebsocket.addEventListener('message', (event: any) => {
       const data = JSON.parse(event.data);
-      console.log('incoming', data);
       if (data.kind === 'storyChange') {
         this.story = data.story;
       }
@@ -48,7 +55,6 @@ createApp({
   },
   watch: {
     story(newStory) {
-      console.log('STORY CHANGE', newStory);
       if (!newStory) {
         return;
       }
@@ -95,12 +101,11 @@ createApp({
   methods: {
     createStoryView(args) {
       try {
+        console.log('HERHEHRER');
         const vm = createApp(StorybookStory, { currentComponent: this.currentComponent });
         const $mounted = vm.mount();
-        console.log('mounted');
-        console.log($mounted.$.vnode);
         const vNode = $mounted?.$.vnode;
-        const view = vNode?.el.nativeView;
+        const view = vNode.el.nativeView;
         args.object.content = view;
       } catch (err) {
         console.error('Failed to render story:', err);
@@ -117,18 +122,12 @@ createApp({
         h('ContentView', { horizontalAlignment: 'left', verticalAlignment: 'top' }, [
           this.currentComponent
             ? h('ContentView', { key: this.storyKey }, [
-                h({
-                  render: () => {
-                    return h(this.currentComponent.component, {
-                      props: this.currentComponent.args,
-                    });
-                  },
-                }),
+                h(StorybookStory, { currentComponent: this.currentComponent }),
               ])
             : null,
         ]),
+        !this.currentComponent ? h('StorybookWelcomeView') : null,
       ]),
-      h('StorybookWelcomeView', { 'v-if': !this.currentComponent }),
     ]);
   },
 }).start();

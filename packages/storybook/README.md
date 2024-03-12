@@ -88,6 +88,18 @@ android {
 </application>
 ```
 
+
+#### Note: Vue3
+
+Note for Storybook to be able to run Vue3 , webpack needs to include Vue with a compiler.
+To do this include the following in the Webpack config
+
+```js
+webpack.chainWebpack(config => {
+		config.resolve.alias.set('vue', 'nativescript-vue/dist/withCompiler.js');
+}, { order: 2 }) // order is important to override the default setting at `nativescript-vue` webpack
+```
+
 ## License
 
 Apache License Version 2.0
