@@ -5,7 +5,9 @@
   "private": true,
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@nativescript/storybook": "file:../../packages/storybook",
+    "@nativescript/storybook": "file:../../dist/packages/storybook",
+    "@storybook/vue3": "^8.0.0",
+    "@storybook/vue3-webpack5": "^8.0.0",
     "@valor/nativescript-websockets": "file:../../node_modules/@valor/nativescript-websockets",
     "nativescript-vue": "3.0.0-rc.1"
   },

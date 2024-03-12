@@ -1,4 +1,5 @@
 const webpack = require('@nativescript/webpack');
+const { VueLoaderPlugin } = require('nativescript-vue/node_modules/vue-loader');
 const { resolve } = require('path');
 
 module.exports = (env) => {
@@ -14,6 +15,20 @@ module.exports = (env) => {
   webpack.chainWebpack(
     (config) => {
       config.resolve.alias.set('vue', 'nativescript-vue/dist/withCompiler.js');
+
+      /**
+       * Only in this demo, since plugin at route has nativescript-vue-template-compiler , so that it is skipped.
+       */
+      config.module.rules
+        .get('vue')
+        .uses.get('vue-loader')
+        .loader(require.resolve('nativescript-vue/node_modules/vue-loader'))
+        .tap((options) => {
+          let { compiler, ...opts } = options;
+          return {
+            ...opts,
+          };
+        });
     },
     { order: 2 }
   );

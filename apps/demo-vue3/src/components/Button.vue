@@ -56,9 +56,9 @@ export default {
 <style scoped>
 .storybook-button {
   border-radius: 12;
+  android-elevation: 0;
   background-color: #eee;
   padding: 8;
-  border: 1 solid #ccc;
 }
 
 .storybook-button--primary {
