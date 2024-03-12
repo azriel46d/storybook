@@ -68,6 +68,7 @@
     "jest-environment-jsdom": "29.4.3",
     "jsonc-eslint-parser": "^2.1.0",
     "nativescript-vue": "~2.9.0",
+    "nativescript-vue-template-compiler": "^2.9.3",
     "nativescript-vue3": "npm:nativescript-vue@3.0.0-rc.1",
     "ng-packagr": "^15.0.0",
     "nx": "15.8.1",
@@ -82,7 +83,7 @@
     "tslib": "^2.5.0",
     "tty-browserify": "^0.0.1",
     "typescript": "^5.4.2",
-    "vue": "~2.6.12",
+    "vue": "2.6.12",
     "webpack": "^5.64.0",
     "ws": "^8.13.0",
     "zone.js": "0.12.0"

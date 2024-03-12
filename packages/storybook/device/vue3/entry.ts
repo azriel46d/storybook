@@ -12,7 +12,7 @@ import {
   defineComponent,
   h,
   markRaw,
-} from 'nativescript-vue';
+} from 'nativescript-vue3';
 
 declare const NSC_STORYBOOK_WS_ADDRESS: string;
 

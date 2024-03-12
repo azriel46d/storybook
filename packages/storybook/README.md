@@ -88,6 +88,20 @@ android {
 </application>
 ```
 
+### Note: Vue
+
+Install peer dependencies
+
+#### Vue 2
+
+```js 
+npm install @storybook/vue@7.0.0 @storybook/vue-webpack5@7.0.0
+```
+#### Vue 3
+
+```js 
+npm install @storybook/vue3@7.0.0 @storybook/vue3-webpack5@7
+```
 
 #### Note: Vue3
 
@@ -99,6 +113,7 @@ webpack.chainWebpack(config => {
 		config.resolve.alias.set('vue', 'nativescript-vue/dist/withCompiler.js');
 }, { order: 2 }) // order is important to override the default setting at `nativescript-vue` webpack
 ```
+
 
 ## License
 
