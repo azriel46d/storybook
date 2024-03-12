@@ -3,7 +3,6 @@ const { resolve } = require('path');
 
 module.exports = (env) => {
   webpack.init(env);
-  webpack.useConfig('vue');
 
   webpack.chainWebpack((config) => {
     // shared demo code
@@ -11,14 +10,11 @@ module.exports = (env) => {
       '@demo/shared',
       resolve(__dirname, '..', '..', 'tools', 'demo')
     );
+    config.resolve.alias.set('vue', 'nativescript-vue/dist/withCompiler.js');
   });
 
-  // Example of how to share common images across demo apps:
-  // webpack.Utils.addCopyRule({
-  //   from: '../../../tools/images',
-  // 	to: 'images',
-  //   context: webpack.Utils.project.getProjectFilePath('node_modules')
-  // });
+  // Learn how to customize:
+  // https://docs.nativescript.org/webpack
 
   return webpack.resolveConfig();
 };

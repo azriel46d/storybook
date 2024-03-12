@@ -58,6 +58,7 @@ export default {
   border-radius: 12;
   background-color: #eee;
   padding: 8;
+  border: 1 solid #ccc;
 }
 
 .storybook-button--primary {
