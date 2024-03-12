@@ -13,6 +13,13 @@ module.exports = (env) => {
     );
   });
 
+  webpack.chainWebpack(
+    (config) => {
+      config.resolve.alias.set('vue', 'nativescript-vue');
+    },
+    { order: 2 }
+  );
+
   // Example of how to share common images across demo apps:
   // webpack.Utils.addCopyRule({
   //   from: '../../../tools/images',

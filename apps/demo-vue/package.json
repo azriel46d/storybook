@@ -1,9 +1,10 @@
 {
+  "name": "demo-vue2",
   "main": "./app/app.ts",
   "description": "NativeScript Application",
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@nativescript/storybook": "file:../../packages/storybook",
+    "@nativescript/storybook": "file:../../dist/packages/storybook",
     "@valor/nativescript-websockets": "file:../../node_modules/@valor/nativescript-websockets",
     "nativescript-vue": "~2.9.3"
   },
